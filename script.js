@@ -32,14 +32,14 @@ while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
       // UpperCase 
       var confirmUpperCase = confirm('Do you want to include upper-case characters?');
         if (confirmUpperCase === true){
-        console.log('Include Uppercase characters');
-        userSelections.push(includeUpperCase);
+          console.log('Include uppercase characters');
+          userSelections.push(includeUpperCase);
         }
 
       // LowerCase  
       var confirmLowerCase = confirm('Do you want to include lower-case characters?');
         if (confirmLowerCase === true){
-          console.log('Include Lowercase characters');
+          console.log('Include lowercase characters');
           userSelections.push(includeLowerCase);
         }
 
@@ -49,7 +49,7 @@ while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
           console.log('Include numeric characters'); 
           userSelections.push(includeNumeric);
         }
-
+      
         console.log(userSelections, 'userInputSelection');
 
 
@@ -61,7 +61,7 @@ while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
   }
         
 
-  for(var i = 0, n=userSelections.length; i<parseInt(confirmLength); ++i) {
+  for(var i = 0, n=userSelections.length; i<parseInt(confirmLength); i++) {
     var finalPassword = userSelections[Math.floor(Math.random() * n)];
   }
 
@@ -74,7 +74,6 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
