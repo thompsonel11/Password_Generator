@@ -50,7 +50,7 @@ while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
           userSelections.push(includeNumeric);
         }
       
-        console.log(userSelections, 'userInputSelection');
+      console.log(userSelections, 'userInputSelection');
 
 
 // Utilizing 'alert' to alert the user to include at least one character choice: special characters, upper/lower case or numbers 
