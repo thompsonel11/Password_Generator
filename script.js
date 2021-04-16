@@ -11,6 +11,7 @@ var finalPassword = '';
 // Utilize a 'while-Loop' so that user must enter valid value to proceed
 function generatePassword () {
 finalPassword = '';
+confirmLength = 0;
 
 while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
 
