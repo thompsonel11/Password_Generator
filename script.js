@@ -1,15 +1,17 @@
-// Initialize Variables 
+// Initialize Global Variables 
 var generateBtn = document.querySelector("#generate")
-var includeSpecialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '/', '?', ']', ' ', '{', '}', '|', '`', '~', '=', '+', ';', ':']
-var includeUpperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-var includeLowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-var includeNumeric = ['0','1','2','3','4','5','6','7','8','9']
+var includeSpecialChar = '!@#$%^&*()_+~`|}{[];?><,./-=';
+var includeUpperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var includeLowerCase = 'abcdefghijklmnopqrstuvwxyz';
+var includeNumeric = '0123456789'
 var confirmLength = 0;
-var userSelections = [];
-var finalPassword = [];
+var userSelections = '';
+var finalPassword = '';
 
 // Utilize a 'while-Loop' so that user must enter valid value to proceed
 function generatePassword () {
+finalPassword = '';
+
 while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
 
 // Utilize 'prompt' to evaluate password length and command user to enter valid value if neccessary
@@ -21,52 +23,49 @@ while (confirmLength < 8 || confirmLength > 128 || confirmLength === ''){
         confirmLength = prompt('Please enter a valid number between 8 and 128')
       }
  }
-// Utilize 'confirm' and 'push' to begin generating password based on character selection        
+// Utilize 'confirm' to begin generating password based on character selection        
       // Special Characters
       var confirmSpecial = confirm('Do you want to include special characters?');
         if (confirmSpecial === true){
           console.log('Include special characters');
-          userSelections.push(includeSpecialChar);
+          userSelections = userSelections + includeSpecialChar;
         }
 
       // UpperCase 
       var confirmUpperCase = confirm('Do you want to include upper-case characters?');
         if (confirmUpperCase === true){
           console.log('Include uppercase characters');
-          userSelections.push(includeUpperCase);
+          userSelections = userSelections + includeUpperCase;
         }
 
       // LowerCase  
       var confirmLowerCase = confirm('Do you want to include lower-case characters?');
         if (confirmLowerCase === true){
           console.log('Include lowercase characters');
-          userSelections.push(includeLowerCase);
+          userSelections = userSelections + includeLowerCase;
         }
 
       // Numbers  
       var confirmNumeric = confirm('Do you want to include numbers?');
         if (confirmNumeric=== true){
-          console.log('Include numeric characters'); 
-          userSelections.push(includeNumeric);
+          console.log('Include numeric characters');
+          userSelections = userSelections + includeNumeric;
         }
       
       console.log(userSelections, 'userInputSelection');
 
 
 // Utilizing 'alert' to alert the user to include at least one character choice: special characters, upper/lower case or numbers 
-        if (confirmSpecial === false && confirmUppercase === false && confirmLowercase === false && confirmNumeric === false) {
+        if (confirmSpecial === false && confirmUpperCase === false && confirmLowerCase === false && confirmNumeric === false) {
            console.log('No character type was selected');
            alert("Please select at least one character type");
         return;
   }
   
     // For loop that will create random password based on length and character type selection(s):
-
-  // var index = Math.floor(Math.random() * confirmLength.length);
-  // var userSelections = confirmLength[index];
-
-    for (var i = 0, n=userSelections.length; i<parseInt(confirmLength); i++) {
-         var finalPassword = userSelections[Math.floor(Math.random() * n)];
+    for (let index = 0; index < confirmLength; index++) {
+      var randomNum = Math.floor(Math.random()*userSelections.length);
+      finalPassword = finalPassword + userSelections[randomNum]
     }
 
      console.log(finalPassword, 'final password')
